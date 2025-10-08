@@ -4,11 +4,11 @@
     "index.html": {
       "path": ""
     },
-    "projects/project-2/index.html": {
-      "path": "projects/project-2"
-    },
     "projects/project-1/index.html": {
       "path": "projects/project-1"
+    },
+    "projects/project-2/index.html": {
+      "path": "projects/project-2"
     }
   },
   "routes": [
