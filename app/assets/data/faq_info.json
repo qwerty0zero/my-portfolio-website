@@ -1,0 +1,25 @@
+[
+    {
+        "title": "What do I do?",
+        "description": "I develop e-commerce websites, landing pages, and other web applications. My main focus is frontend development and backend integration to ensure websites are fast, responsive, and user-friendly."},
+    {
+        "title": "Which technologies do I use?",
+        "description": "My stack includes Vue 3, Nuxt.js, HTML, CSS, and JavaScript for frontend; Python with Django or FastAPI for backend; PostgreSQL and other databases; and design tools like Figma, Adobe XD, following a Pixel Perfect approach."
+},    
+    {
+        "title": "What about bots?",
+        "description": "I create Telegram bots and trading bots using Python. I can automate tasks, integrate with APIs, and set up notifications and analytics."
+    },
+    {
+        "title": "Can I build a blog or content site?",
+        "description": "Yes, I can develop blogs, landing pages, or corporate websites with content management systems, SEO optimization, and responsive design."
+    },
+    {
+        "title": "What are my strengths?",
+        "description": "Writing clean, maintainable code, implementing modern and adaptive designs, fast development speed, and strong attention to detail. I make sure products not only work well but also look professional."
+    },
+  {
+    "title": "How can I help businesses?",
+    "description": "I can quickly implement a website tailored to your goals — sales, product presentation, or process automation. I turn every project into a convenient and effective tool."
+  }
+]

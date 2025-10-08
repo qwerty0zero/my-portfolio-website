@@ -1,0 +1,33 @@
+
+import projects from './app/assets/data/projects.json'
+
+export default defineNuxtConfig({
+    compatibilityDate: '2025-07-15',
+
+    nitro: {
+        preset: 'vercel',
+        prerender: {
+            routes: [
+                '/', // главная
+                ...projects.map(p => `/projects/${p.projectName}`)
+            ]
+        }
+    },
+    app:{
+        head: {
+            title: 'Ihor Kuhel',
+            htmlAttrs: {
+                lang: 'en',
+            },
+            meta: [{ name: 'theme-color', content: '#d52627' }],
+        },
+    },
+
+    devtools: { enabled: true },
+    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/image'],
+    css: [
+        '~/assets/styles/variables.css',
+        '~/assets/styles/style.css'
+    ]
+    // plugins здесь НЕ нужно
+})
