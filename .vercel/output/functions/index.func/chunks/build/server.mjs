@@ -1,16 +1,19 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { hasInjectionContext, inject, getCurrentInstance, defineComponent, ref, h, Suspense, Fragment, createApp, provide, shallowReactive, toRef, onErrorCaptured, onServerPrefetch, unref, createVNode, resolveDynamicComponent, reactive, effectScope, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, mergeProps, getCurrentScope, useSSRContext } from 'vue';
-import { k as hasProtocol, m as isScriptProtocol, l as joinURL, w as withQuery, s as sanitizeStatusCode, n as getContext, $ as $fetch, o as baseURL, q as createHooks, v as executeAsync, h as createError$1, x as toRouteMatcher, y as createRouter$1, z as defu } from '../_/nitro.mjs';
+import { i as hasProtocol, l as isScriptProtocol, k as joinURL, w as withQuery, s as sanitizeStatusCode, m as getContext, $ as $fetch, n as createHooks, o as executeAsync, e as createError$1, q as toRouteMatcher, r as createRouter$1, v as defu } from '../_/nitro.mjs';
+import { b as baseURL } from '../routes/renderer.mjs';
 import { RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
 import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs } from 'vue/server-renderer';
 import 'node:http';
 import 'node:https';
 import 'node:events';
 import 'node:buffer';
-import 'node:url';
-import 'ipx';
 import 'node:fs';
 import 'node:path';
 import 'node:crypto';
+import 'vue-bundle-renderer/runtime';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/utils';
 
 if (!globalThis.$fetch) {
   globalThis.$fetch = $fetch.create({
@@ -381,12 +384,12 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-WBBF2qKO.mjs')
+    component: () => import('./index-BMz_fRc3.mjs')
   },
   {
     name: "projects-projectName",
     path: "/projects/:projectName()",
-    component: () => import('./_projectName_-hqLgxlI2.mjs')
+    component: () => import('./_projectName_-D9iZBwTX.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -870,8 +873,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-C6NqIA8p.mjs'));
-    const _Error = defineAsyncComponent(() => import('./error-500-D-pLbQTy.mjs'));
+    const _Error404 = defineAsyncComponent(() => import('./error-404-Cnau7C0A.mjs'));
+    const _Error = defineAsyncComponent(() => import('./error-500-LxTgZ0fD.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));

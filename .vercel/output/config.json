@@ -1,11 +1,11 @@
 {
   "version": 3,
   "overrides": {
-    "projects/project-1/index.html": {
-      "path": "projects/project-1"
-    },
     "projects/project-2/index.html": {
       "path": "projects/project-2"
+    },
+    "projects/project-1/index.html": {
+      "path": "projects/project-1"
     },
     "index.html": {
       "path": ""
@@ -82,10 +82,6 @@
     {
       "src": "/projects/(?<projectName>[^/]+)",
       "dest": "/projects/[projectName]"
-    },
-    {
-      "src": "/_ipx/(?:.*)",
-      "dest": "/_ipx/[...]"
     },
     {
       "src": "/__nuxt_island/(?:.*)",
