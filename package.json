@@ -18,6 +18,7 @@
     "eslint": "^9.33.0",
     "fontfaceobserver": "^2.3.0",
     "gsap": "^3.13.0",
+    "ipx": "^3.1.1",
     "pinia": "^3.0.3",
     "vue": "^3.5.18",
     "vue-router": "^4.5.1"
