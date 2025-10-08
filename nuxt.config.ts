@@ -3,7 +3,8 @@ import projects from './app/assets/data/projects.json'
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
-
+    ssr: false,      // отключаем SSR
+    target: 'static', // SSG
     nitro: {
         preset: 'vercel',
         prerender: {
