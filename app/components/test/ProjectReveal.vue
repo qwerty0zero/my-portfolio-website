@@ -18,19 +18,14 @@ const isClosing = ref(false)
 let scrollTop;
 
 function disableScroll() {
-  scrollTop = window.scrollY || document.documentElement.scrollTop;
-  document.body.style.position = 'fixed';
-  document.body.style.top = `-${scrollTop}px`;
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-  console.log(455)
+  scrollTop = window.scrollY
+  document.body.style.overflow = 'hidden'
+}
+function enableScroll() {
+  document.body.style.overflow = ''
+  window.scrollTo(0, scrollTop)
 }
 
-function enableScroll() {
-  document.body.style.position = '';
-  document.body.style.top = '';
-  window.scrollTo(0, scrollTop); // возвращаем на место
-}
 // --- Единая функция закрытия ---
 async function handleClose() {
   if (!props.active || isClosing.value) return
@@ -50,11 +45,12 @@ async function handleClose() {
       const items = container.querySelectorAll('.reveal_item')
       const maxDelay = (numColumns - 1) * 100
 
-      items.forEach((item, index) => {
-        item.style.transitionDelay = `${(numColumns - 1 - index) * 100}ms`
-        item.style.transform = 'translateY(100%)'
+      requestAnimationFrame(() => {
+        items.forEach((item, index) => {
+          item.style.transitionDelay = `${(numColumns - 1 - index) * 100}ms`
+          item.style.transform = 'translateY(100%)'
+        })
       })
-
       // 4. Ждем завершения анимации колонок
       await new Promise(resolve => setTimeout(resolve, maxDelay + animationDuration))
     }
@@ -95,7 +91,10 @@ async function onEnter(el, done) {
   })
   // Ждем завершения анимации колонок + пауза
   await new Promise(resolve => setTimeout(resolve, animationDuration + maxDelay ))
-  disableScroll()
+  requestAnimationFrame(() => {
+    disableScroll()
+    showDescription.value = true
+  })
 
   // Показываем описание
   showDescription.value = true
@@ -184,7 +183,7 @@ onBeforeUnmount(() => {
   width: calc(100vw / 9);
   height: 100%;
   background-color: var(--text-color);
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1s ease-out;
   border-left: 1px solid #0f0f0f38;
 }
 
@@ -304,6 +303,15 @@ button.closeBtn{
 .closeBtn:hover span:nth-child(2) {
   transform: translate(-50%) rotate(-45deg);
 }
+
+.reveal_item,
+.top_fade,
+.left_fade,
+.fade span {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
 @media screen and (max-width: 850px) {
 
 .project-description{

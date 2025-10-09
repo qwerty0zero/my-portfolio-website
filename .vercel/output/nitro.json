@@ -1,6 +1,6 @@
 {
-  "date": "2025-10-08T22:41:14.356Z",
-  "preset": "vercel-static",
+  "date": "2025-10-09T01:15:56.680Z",
+  "preset": "vercel",
   "framework": {
     "name": "nuxt",
     "version": "4.1.1"
@@ -9,7 +9,7 @@
     "nitro": "2.12.4"
   },
   "commands": {
-    "preview": "npx serve static",
+    "preview": "",
     "deploy": "npx vercel deploy --prebuilt"
   },
   "config": {}

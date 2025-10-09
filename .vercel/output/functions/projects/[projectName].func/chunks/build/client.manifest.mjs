@@ -1,0 +1,230 @@
+const client_manifest = {
+  "../node_modules/nuxt/dist/app/components/error-404.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "5-Hvotcd.js",
+    "name": "error-404",
+    "src": "../node_modules/nuxt/dist/app/components/error-404.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Bam-WnOO.js",
+      "_DlAUqK2U.js",
+      "_qXAomcMk.js",
+      "../node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "error-404.DlVPZ4GE.css"
+    ]
+  },
+  "error-404.DlVPZ4GE.css": {
+    "file": "error-404.DlVPZ4GE.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "../node_modules/nuxt/dist/app/components/error-500.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "DVdNlyfG.js",
+    "name": "error-500",
+    "src": "../node_modules/nuxt/dist/app/components/error-500.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_DlAUqK2U.js",
+      "_qXAomcMk.js",
+      "../node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "error-500.DjyirMQI.css"
+    ]
+  },
+  "error-500.DjyirMQI.css": {
+    "file": "error-500.DjyirMQI.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "../node_modules/nuxt/dist/app/entry.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "B8eAyXaU.js",
+    "name": "entry",
+    "src": "../node_modules/nuxt/dist/app/entry.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "../node_modules/nuxt/dist/app/components/error-404.vue",
+      "../node_modules/nuxt/dist/app/components/error-500.vue"
+    ],
+    "css": [
+      "entry.CFMpxbqt.css"
+    ],
+    "assets": [
+      "ClashDisplay-Extralight.D3i1MCwm.woff2",
+      "ClashDisplay-Light.DIjv0-nY.woff2",
+      "ClashDisplay-Regular.DhusH4GR.woff2",
+      "ClashDisplay-Medium.BPdWq--j.woff2",
+      "ClashDisplay-Semibold.DcA1xgJG.woff2",
+      "ClashDisplay-Bold.YaCnK2PY.woff2",
+      "ClashDisplay-Variable.Buk7cB_f.woff2"
+    ]
+  },
+  "entry.CFMpxbqt.css": {
+    "file": "entry.CFMpxbqt.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "ClashDisplay-Extralight.D3i1MCwm.woff2": {
+    "file": "ClashDisplay-Extralight.D3i1MCwm.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Light.DIjv0-nY.woff2": {
+    "file": "ClashDisplay-Light.DIjv0-nY.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Regular.DhusH4GR.woff2": {
+    "file": "ClashDisplay-Regular.DhusH4GR.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Medium.BPdWq--j.woff2": {
+    "file": "ClashDisplay-Medium.BPdWq--j.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Semibold.DcA1xgJG.woff2": {
+    "file": "ClashDisplay-Semibold.DcA1xgJG.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Bold.YaCnK2PY.woff2": {
+    "file": "ClashDisplay-Bold.YaCnK2PY.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "ClashDisplay-Variable.Buk7cB_f.woff2": {
+    "file": "ClashDisplay-Variable.Buk7cB_f.woff2",
+    "resourceType": "font",
+    "mimeType": "font/woff2"
+  },
+  "_Bam-WnOO.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "Bam-WnOO.js",
+    "name": "nuxt-link",
+    "imports": [
+      "../node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "_DlAUqK2U.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "DlAUqK2U.js",
+    "name": "_plugin-vue_export-helper"
+  },
+  "_qXAomcMk.js": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "qXAomcMk.js",
+    "name": "composables",
+    "imports": [
+      "../node_modules/nuxt/dist/app/entry.js"
+    ]
+  },
+  "assets/fonts/ClashDisplay-Bold.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Bold.YaCnK2PY.woff2",
+    "src": "assets/fonts/ClashDisplay-Bold.woff2"
+  },
+  "assets/fonts/ClashDisplay-Extralight.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Extralight.D3i1MCwm.woff2",
+    "src": "assets/fonts/ClashDisplay-Extralight.woff2"
+  },
+  "assets/fonts/ClashDisplay-Light.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Light.DIjv0-nY.woff2",
+    "src": "assets/fonts/ClashDisplay-Light.woff2"
+  },
+  "assets/fonts/ClashDisplay-Medium.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Medium.BPdWq--j.woff2",
+    "src": "assets/fonts/ClashDisplay-Medium.woff2"
+  },
+  "assets/fonts/ClashDisplay-Regular.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Regular.DhusH4GR.woff2",
+    "src": "assets/fonts/ClashDisplay-Regular.woff2"
+  },
+  "assets/fonts/ClashDisplay-Semibold.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Semibold.DcA1xgJG.woff2",
+    "src": "assets/fonts/ClashDisplay-Semibold.woff2"
+  },
+  "assets/fonts/ClashDisplay-Variable.woff2": {
+    "resourceType": "font",
+    "mimeType": "font/woff2",
+    "file": "ClashDisplay-Variable.Buk7cB_f.woff2",
+    "src": "assets/fonts/ClashDisplay-Variable.woff2"
+  },
+  "pages/index.vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "CcXnIUpo.js",
+    "name": "index",
+    "src": "pages/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_DlAUqK2U.js",
+      "../node_modules/nuxt/dist/app/entry.js"
+    ],
+    "css": [
+      "index.CJM9X-_B.css"
+    ]
+  },
+  "index.CJM9X-_B.css": {
+    "file": "index.CJM9X-_B.css",
+    "resourceType": "style",
+    "prefetch": true,
+    "preload": true
+  },
+  "pages/projects/[projectName].vue": {
+    "resourceType": "script",
+    "module": true,
+    "prefetch": true,
+    "preload": true,
+    "file": "NyFodWS9.js",
+    "name": "_projectName_",
+    "src": "pages/projects/[projectName].vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "_Bam-WnOO.js",
+      "../node_modules/nuxt/dist/app/entry.js"
+    ]
+  }
+};
+
+export { client_manifest as default };
+//# sourceMappingURL=client.manifest.mjs.map
