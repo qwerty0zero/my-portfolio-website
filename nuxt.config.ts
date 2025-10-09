@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     ssr: false,      // отключаем SSR
     target: 'static', // SSG
     nitro: {
-        preset: 'vercel',
+        preset: 'vercel_static',
         prerender: {
             routes: [
                 '/', // главная
