@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Front-end",
+    "description": "I have been working in front-end development for several years, building landing pages and interactive web applications. I focus on interface quality, responsiveness, and user experience. I use modern frameworks and best practices, optimizing project speed and maintainability. I follow trends and new technologies to create modern, user-friendly, and functional interfaces." },
+  {
+    "title": "web-design",
+    "description": "I develop my web design skills, studying trends and other designers’ work to create modern, user-friendly interfaces. For each project, I prepare multiple layouts, select typography and color palettes, and consider implementation, animations, and interactive elements. My goal is to make designs visually appealing, functional, and intuitive for users." },
+  {
+    "title": "back-end",
+    "description": "Experienced in database management and server-side logic. I develop online stores, integrate APIs, and create Telegram bots." }
+]
