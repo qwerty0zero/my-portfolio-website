@@ -1,5 +1,5 @@
 import process from 'node:process';globalThis._importMeta_=globalThis._importMeta_||{url:"file:///_entry.js",env:process.env};import { hasInjectionContext, inject, getCurrentInstance, defineComponent, ref, h, Suspense, Fragment, createApp, provide, shallowReactive, toRef, onErrorCaptured, onServerPrefetch, unref, createVNode, resolveDynamicComponent, reactive, effectScope, shallowRef, isReadonly, isRef, isShallow, isReactive, toRaw, defineAsyncComponent, mergeProps, getCurrentScope, useSSRContext } from 'vue';
-import { k as hasProtocol, m as isScriptProtocol, l as joinURL, w as withQuery, s as sanitizeStatusCode, n as getContext, $ as $fetch, o as baseURL, q as createHooks, v as executeAsync, h as createError$1, x as toRouteMatcher, y as createRouter$1, z as defu } from '../_/nitro.mjs';
+import { k as hasProtocol, l as isScriptProtocol, m as joinURL, w as withQuery, s as sanitizeStatusCode, n as getContext, $ as $fetch, o as baseURL, q as createHooks, r as executeAsync, h as createError$1, v as toRouteMatcher, x as createRouter$1, y as defu } from '../_/nitro.mjs';
 import { RouterView, createMemoryHistory, createRouter, START_LOCATION } from 'vue-router';
 import { ssrRenderSuspense, ssrRenderComponent, ssrRenderVNode, ssrRenderAttrs } from 'vue/server-renderer';
 import 'node:http';
@@ -36,7 +36,7 @@ function createNuxtApp(options) {
     provide: void 0,
     versions: {
       get nuxt() {
-        return "4.1.1";
+        return "4.2.1";
       },
       get vue() {
         return nuxtApp.vueApp.version;
@@ -333,12 +333,11 @@ function encodeURL(location2, isExternalHost = false) {
   return url.toString();
 }
 const NUXT_ERROR_SIGNATURE = "__nuxt_error";
-const useError = () => toRef(useNuxtApp().payload, "error");
+const useError = /* @__NO_SIDE_EFFECTS__ */ () => toRef(useNuxtApp().payload, "error");
 const showError = (error) => {
   const nuxtError = createError(error);
   try {
-    const nuxtApp = useNuxtApp();
-    const error2 = useError();
+    const error2 = /* @__PURE__ */ useError();
     if (false) ;
     error2.value ||= nuxtError;
   } catch {
@@ -381,12 +380,12 @@ const _routes = [
   {
     name: "index",
     path: "/",
-    component: () => import('./index-WBBF2qKO.mjs')
+    component: () => import('./index-LFQcRivP.mjs')
   },
   {
     name: "projects-projectName",
     path: "/projects/:projectName()",
-    component: () => import('./_projectName_-hqLgxlI2.mjs')
+    component: () => import('./_projectName_-DQ8_bSR_.mjs')
   }
 ];
 const ROUTE_KEY_PARENTHESES_RE = /(:\w+)\([^)]+\)/g;
@@ -415,7 +414,7 @@ const routerOptions0 = {
   scrollBehavior(to, from, savedPosition) {
     const nuxtApp = useNuxtApp();
     const hashScrollBehaviour = useRouter().options?.scrollBehaviorType ?? "auto";
-    if (to.path === from.path) {
+    if (to.path.replace(/\/$/, "") === from.path.replace(/\/$/, "")) {
       if (from.hash && !to.hash) {
         return { left: 0, top: 0 };
       }
@@ -479,7 +478,7 @@ const configRouterOptions = {
   hashMode: false,
   scrollBehaviorType: "auto"
 };
-const hashMode = routerOptions0.hashMode ?? false;
+const hashMode = routerOptions1.hashMode ?? false;
 const routerOptions = {
   ...configRouterOptions,
   ...routerOptions0,
@@ -578,7 +577,6 @@ const plugin = /* @__PURE__ */ defineNuxtPlugin({
       global: [],
       named: {}
     };
-    useError();
     if (!nuxtApp.ssrContext?.islandContext) {
       router.afterEach(async (to, _from, failure) => {
         delete nuxtApp._processingMiddleware;
@@ -870,8 +868,8 @@ const _sfc_main$1 = {
     const statusMessage = _error.statusMessage ?? (is404 ? "Page Not Found" : "Internal Server Error");
     const description = _error.message || _error.toString();
     const stack = void 0;
-    const _Error404 = defineAsyncComponent(() => import('./error-404-C6NqIA8p.mjs'));
-    const _Error = defineAsyncComponent(() => import('./error-500-D-pLbQTy.mjs'));
+    const _Error404 = defineAsyncComponent(() => import('./error-404-P9vO9DZX.mjs'));
+    const _Error = defineAsyncComponent(() => import('./error-500-C2EiWDv8.mjs'));
     const ErrorTemplate = is404 ? _Error404 : _Error;
     return (_ctx, _push, _parent, _attrs) => {
       _push(ssrRenderComponent(unref(ErrorTemplate), mergeProps({ statusCode: unref(statusCode), statusMessage: unref(statusMessage), description: unref(description), stack: unref(stack) }, _attrs), null, _parent));
@@ -895,7 +893,7 @@ const _sfc_main = {
     const SingleRenderer = false;
     provide(PageRouteSymbol, useRoute());
     nuxtApp.hooks.callHookWith((hooks) => hooks.map((hook) => hook()), "vue:setup");
-    const error = useError();
+    const error = /* @__PURE__ */ useError();
     const abortRender = error.value && !nuxtApp.ssrContext.error;
     onErrorCaptured((err, target, info) => {
       nuxtApp.hooks.callHook("vue:error", err, target, info).catch((hookError) => console.error("[nuxt] Error in `vue:error` hook", hookError));
@@ -950,7 +948,7 @@ let entry;
     return vueApp;
   };
 }
-const entry$1 = (ssrContext) => entry(ssrContext);
+const entry_default = (ssrContext) => entry(ssrContext);
 
-export { useRoute as a, useRouter as b, useRuntimeConfig as c, nuxtLinkDefaults as d, entry$1 as default, hashMode as h, navigateTo as n, resolveRouteObject as r, useNuxtApp as u };
+export { useRoute as a, useRouter as b, useRuntimeConfig as c, nuxtLinkDefaults as d, entry_default as default, hashMode as h, navigateTo as n, resolveRouteObject as r, useNuxtApp as u };
 //# sourceMappingURL=server.mjs.map

@@ -1,5 +1,5 @@
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'vue-bundle-renderer/runtime';
-import { b as buildAssetsURL, a as useRuntimeConfig, g as getResponseStatusText, c as getResponseStatus, d as defineRenderHandler, e as publicAssetsURL, f as getQuery, h as createError, i as destr, j as getRouteRules, k as hasProtocol, r as relative, l as joinURL, u as useNitroApp } from '../_/nitro.mjs';
+import { b as buildAssetsURL, a as useRuntimeConfig, g as getResponseStatusText, c as getResponseStatus, d as defineRenderHandler, e as publicAssetsURL, f as getQuery, h as createError, i as destr, j as getRouteRules, u as useNitroApp } from '../_/nitro.mjs';
 import { renderToString } from 'vue/server-renderer';
 import { createHead as createHead$1, propsToString, renderSSRHead } from 'unhead/server';
 import { stringify, uneval } from 'devalue';
@@ -11,6 +11,7 @@ const VueResolver = (_, value) => {
 };
 
 const headSymbol = "usehead";
+// @__NO_SIDE_EFFECTS__
 function vueInstall(head) {
   const plugin = {
     install(app) {
@@ -22,6 +23,7 @@ function vueInstall(head) {
   return plugin.install;
 }
 
+// @__NO_SIDE_EFFECTS__
 function injectHead() {
   if (hasInjectionContext()) {
     const instance = inject(headSymbol);
@@ -33,7 +35,7 @@ function injectHead() {
   throw new Error("useHead() was called without provide context, ensure you call it through the setup() function.");
 }
 function useHead(input, options = {}) {
-  const head = options.head || injectHead();
+  const head = options.head || /* @__PURE__ */ injectHead();
   return head.ssr ? head.push(input || {}, options) : clientUseHead(head, input, options);
 }
 function clientUseHead(head, input, options = {}) {
@@ -62,6 +64,7 @@ function clientUseHead(head, input, options = {}) {
   return entry;
 }
 
+// @__NO_SIDE_EFFECTS__
 function createHead(options = {}) {
   const head = createHead$1({
     ...options,
@@ -90,22 +93,19 @@ const appId = "nuxt-app";
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 const getServerEntry = () => import('../build/server.mjs').then((r) => r.default || r);
-const getClientManifest = () => import('../build/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getPrecomputedDependencies = () => import('../build/client.precomputed.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
-  const manifest = await getClientManifest();
-  if (!manifest) {
-    throw new Error("client.manifest is not available");
-  }
   const createSSRApp = await getServerEntry();
   if (!createSSRApp) {
     throw new Error("Server bundle is not available");
   }
-  const options = {
-    manifest,
+  const precomputed = await getPrecomputedDependencies();
+  const renderer = createRenderer(createSSRApp, {
+    precomputed,
+    manifest: void 0,
     renderToString: renderToString$1,
     buildAssetsURL
-  };
-  const renderer = createRenderer(createSSRApp, options);
+  });
   async function renderToString$1(input, context) {
     const html = await renderToString(input, context);
     return APP_ROOT_OPEN_TAG + html + APP_ROOT_CLOSE_TAG;
@@ -113,7 +113,7 @@ const getSSRRenderer = lazyCachedFunction(async () => {
   return renderer;
 });
 const getSPARenderer = lazyCachedFunction(async () => {
-  const manifest = await getClientManifest();
+  const precomputed = await getPrecomputedDependencies();
   const spaTemplate = await import('../virtual/_virtual_spa-template.mjs').then((r) => r.template).catch(() => "").then((r) => {
     {
       const APP_SPA_LOADER_OPEN_TAG = `<${appSpaLoaderTag}${propsToString(appSpaLoaderAttrs)}>`;
@@ -123,13 +123,13 @@ const getSPARenderer = lazyCachedFunction(async () => {
       return appTemplate + loaderTemplate;
     }
   });
-  const options = {
-    manifest,
+  const renderer = createRenderer(() => () => {
+  }, {
+    precomputed,
+    manifest: void 0,
     renderToString: () => spaTemplate,
     buildAssetsURL
-  };
-  const renderer = createRenderer(() => () => {
-  }, options);
+  });
   const result = await renderer.renderToString({});
   const renderToString = (ssrContext) => {
     const config = useRuntimeConfig(ssrContext.event);
@@ -162,12 +162,6 @@ function getRenderer(ssrContext) {
   return ssrContext.noSSR ? getSPARenderer() : getSSRRenderer();
 }
 const getSSRStyles = lazyCachedFunction(() => import('../build/styles.mjs').then((r) => r.default || r));
-const getEntryIds = () => getClientManifest().then((r) => Object.values(r).filter(
-  (r2) => (
-    // @ts-expect-error internal key set by CSS inlining configuration
-    r2._globalCSS
-  )
-).map((r2) => r2.src));
 
 function renderPayloadResponse(ssrContext) {
   return {
@@ -251,7 +245,7 @@ async function renderInlineStyles(usedModules) {
 
 const renderSSRHeadOptions = {"omitLineBreaks":true};
 
-const entryFileName = "DcS1_a-4.js";
+const entryIds = [];
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
@@ -259,7 +253,6 @@ const HAS_APP_TELEPORTS = !!(appTeleportAttrs.id);
 const APP_TELEPORT_OPEN_TAG = HAS_APP_TELEPORTS ? `<${appTeleportTag}${propsToString(appTeleportAttrs)}>` : "";
 const APP_TELEPORT_CLOSE_TAG = HAS_APP_TELEPORTS ? `</${appTeleportTag}>` : "";
 const PAYLOAD_URL_RE = /^[^?]*\/_payload.json(?:\?.*)?$/ ;
-let entryPath;
 const renderer = defineRenderHandler(async (event) => {
   const nitroApp = useNitroApp();
   const ssrError = event.path.startsWith("/__nuxt_error") ? getQuery(event) : null;
@@ -294,7 +287,7 @@ const renderer = defineRenderHandler(async (event) => {
   }
   const renderer = await getRenderer(ssrContext);
   {
-    for (const id of await getEntryIds()) {
+    for (const id of entryIds) {
       ssrContext.modules.add(id);
     }
   }
@@ -320,28 +313,6 @@ const renderer = defineRenderHandler(async (event) => {
   }
   const NO_SCRIPTS = routeOptions.noScripts;
   const { styles, scripts } = getRequestDependencies(ssrContext, renderer.rendererContext);
-  if (!NO_SCRIPTS) {
-    let path = entryPath;
-    if (!path) {
-      path = buildAssetsURL(entryFileName);
-      if (/^(?:\/|\.+\/)/.test(path) || hasProtocol(path, { acceptRelative: true })) {
-        entryPath = path;
-      } else {
-        path = relative(event.path.replace(/\/[^/]+$/, "/"), joinURL("/", path));
-        if (!/^(?:\/|\.+\/)/.test(path)) {
-          path = `./${path}`;
-        }
-      }
-    }
-    ssrContext.head.push({
-      script: [{
-        tagPosition: "head",
-        tagPriority: -2,
-        type: "importmap",
-        innerHTML: JSON.stringify({ imports: { "#entry": path } })
-      }]
-    }, headEntryOptions);
-  }
   if (ssrContext._preloadManifest && !NO_SCRIPTS) {
     ssrContext.head.push({
       link: [
@@ -413,7 +384,14 @@ const renderer = defineRenderHandler(async (event) => {
   };
 });
 function normalizeChunks(chunks) {
-  return chunks.filter(Boolean).map((i) => i.trim());
+  const result = [];
+  for (const _chunk of chunks) {
+    const chunk = _chunk?.trim();
+    if (chunk) {
+      result.push(chunk);
+    }
+  }
+  return result;
 }
 function joinTags(tags) {
   return tags.join("");

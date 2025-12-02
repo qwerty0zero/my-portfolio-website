@@ -26,7 +26,7 @@
         tabindex="-1"
         @keydown="handleKeydown"
     >
-      <tv-noise-effect/>
+      <tv-noise-effect class="noise-dark-rounded"/>
       <div
           v-for="(el, index) in elements"
           :key="index"

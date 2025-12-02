@@ -1,14 +1,14 @@
 {
   "version": 3,
   "overrides": {
-    "projects/project-1/index.html": {
-      "path": "projects/project-1"
+    "index.html": {
+      "path": ""
     },
     "projects/project-2/index.html": {
       "path": "projects/project-2"
     },
-    "index.html": {
-      "path": ""
+    "projects/project-1/index.html": {
+      "path": "projects/project-1"
     }
   },
   "routes": [
@@ -68,8 +68,8 @@
       "handle": "filesystem"
     },
     {
-      "src": "/__nuxt_error",
-      "dest": "/__nitro"
+      "src": "(?<url>/__nuxt_error)",
+      "dest": "/__fallback"
     },
     {
       "src": "/__nuxt_error",
@@ -93,7 +93,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/__nitro"
+      "dest": "/__fallback"
     }
   ]
 }
