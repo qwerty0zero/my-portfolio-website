@@ -3,7 +3,6 @@ import projects from './app/assets/data/projects.json'
 
 export default defineNuxtConfig({
     compatibilityDate: '2025-07-15',
-
     nitro: {
         preset: 'vercel',
         prerender: {
