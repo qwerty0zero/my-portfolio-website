@@ -24,7 +24,7 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
-    modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/image'],
+    modules: ['@nuxt/eslint', '@nuxt/fonts'],
     css: [
         '~/assets/styles/variables.css',
         '~/assets/styles/style.css'
